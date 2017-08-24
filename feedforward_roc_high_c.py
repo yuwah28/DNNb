@@ -54,22 +54,39 @@ print("y_train class",y_train.shape[1])
 # Build NNlayer using Keras
 #
 print("Building Keras Model (Feedforward)...")
-nepochs = 3
-BatchSize = 1
+nepochs = 100
+BatchSize = 100
 from keras.layers import Dense, Dropout
 from keras.models import Sequential
+from keras.optimizers import Adam         # Add optimizer
 model = Sequential()
-model.add(Dense(24, activation='relu', input_dim=16))
-model.add(Dropout(0.2))
-model.add(Dense(12, activation='relu'))   # Add first hidden layer
-model.add(Dropout(0.2))
-model.add(Dense(6, activation='relu'))    # Add second hidden layer
-model.add(Dense(3, activation='softmax')) # Add an output layer
-model.summary() 
+model.add(Dense(45, activation='relu', input_dim=16))
+model.add(Dropout(0.3))
+model.add(Dense(45, activation='relu'))   # Add first hidden layer                         
+model.add(Dropout(0.3))
+model.add(Dense(45, activation='relu'))   # Add second hidden layer                        
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add third hidden layer                         
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add fourth hidden layer                        
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add fifth hidden layer                         
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add sixth hidden layer                         
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add seventh hidden layer                       
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(45, activation='relu'))   # Add eighth hidden layer                        
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(40, activation='relu'))   # Add ninth hidden layer                         
+#model.add(Dropout(0.2))                                                                   
+model.add(Dense(3, activation='softmax')) # Add an output layer                            
+model.summary()
 
 # Configure learning process  
+adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
+              optimizer=adam,
               metrics=['accuracy'])
 
 model.fit(X_train, y_train,epochs=nepochs, batch_size=BatchSize, verbose=1)
