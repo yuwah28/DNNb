@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 #
 # Read Data from hdf5
 #
-filepath = '/Users/yuwahlim/Arxiv/Programming/MLtutorial/DNNbtag/hdf5Data/'
+filepath = '/phys/groups/tev/scratch4/users/paklim/NeuralNetwork/pak/Charm/test2/'
 f = h5py.File(filepath+'gjj_Variables.hdf5', 'r')
 
 # Define variables
